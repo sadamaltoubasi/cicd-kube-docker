@@ -1,5 +1,5 @@
 FROM eclipse-temurin:17-jdk AS BUILD_IMAGE
-RUN apt update && apt install maven -y
+RUN apt-get update && apt-get install -y git maven
 RUN git clone https://github.com/devopshydclub/vprofile-project.git
 RUN cd vprofile-project && git checkout docker && mvn install
 
