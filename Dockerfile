@@ -1,9 +1,9 @@
-FROM openjdk:11 AS BUILD_IMAGE
+FROM eclipse-temurin:17-jdk AS BUILD_IMAGE
 RUN apt update && apt install maven -y
 RUN git clone https://github.com/devopshydclub/vprofile-project.git
 RUN cd vprofile-project && git checkout docker && mvn install
 
-FROM tomcat:9-jre11
+FROM tomcat:9.0-jdk17-openjdk
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
