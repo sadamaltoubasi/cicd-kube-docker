@@ -5,13 +5,11 @@ metadata:
 spec:
   ports:
 
-  - name: rabbit-port
-    port: 5672
+  - port: 5672
     targetPort: 5672
     protocol: TCP
 
-  - name: rabbit-mgmt
-    port: 15672
+  - port: 15672
     targetPort: 15672
     protocol: TCP
 
