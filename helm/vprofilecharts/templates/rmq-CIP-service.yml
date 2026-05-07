@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: vpromq01
 spec:
-ports:
+  ports:
 
   - name: rabbit-port
     port: 5672
