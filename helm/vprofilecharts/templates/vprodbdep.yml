@@ -21,21 +21,14 @@ spec:
         - name: vprodb-port
           containerPort: 3306
         env: 
-         - name: MYSQL_ROOT_PASSWORD
-           valueFrom:
-             secretKeyRef:
-               name: app-secret
-               key: db-pass
-#        env:
-#         - name: MYSQL_ROOT_PASSWORD
-#           value: "vprodbpass"
-
-         - name: MYSQL_PASSWORD
-            value: "admin123"
-         
-         - name: MYSQL_USER
-            value: "admin"
-
-         - name: MYSQL_DATABASE
-           value: "accounts"
-
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: db-pass
+        - name: MYSQL_PASSWORD
+          value: "admin123"
+        - name: MYSQL_USER
+          value: "admin"
+        - name: MYSQL_DATABASE
+          value: "accounts"
