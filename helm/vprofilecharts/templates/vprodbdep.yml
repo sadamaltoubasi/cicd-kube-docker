@@ -30,3 +30,12 @@ spec:
 #         - name: MYSQL_ROOT_PASSWORD
 #           value: "vprodbpass"
 
+         - name: MYSQL_PASSWORD
+            value: "admin123"
+         
+         - name: MYSQL_USER
+            value: "admin"
+
+         - name: MYSQL_DATABASE
+           value: "accounts"
+
