@@ -3,10 +3,18 @@ kind: Service
 metadata:
   name: vpromq01
 spec:
-  ports:
-  - port: 5672
-    targetPort: vpromq01-port
+ports:
+
+  - name: rabbit-port
+    port: 5672
+    targetPort: 5672
     protocol: TCP
+
+  - name: rabbit-mgmt
+    port: 15672
+    targetPort: 15672
+    protocol: TCP
+
   selector:
     app: vpromq01
   type: ClusterIP
