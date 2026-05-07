@@ -1,11 +1,12 @@
-FROM maven:3.9.6-eclipse-temurin-17-alpine AS build
-RUN apk add --no-cache git
-WORKDIR /app
-RUN git clone https://github.com/sadamaltoubasi/vprofile-project.git .
-RUN git checkout docker
-RUN mvn clean package -DskipTests 
+FROM maven:3.5-jdk-8-alpine AS build
 
-FROM tomcat:10-jdk17-openjdk-slim
+WORKDIR /app
+RUN apk add --no-cache git
+RUN git clone https://github.com/sadamaltoubasi/cicd-kube-docker.git .
+RUN mvn clean package -DskipTests
+
+FROM tomcat:8.5-jre8-alpine
+
 RUN rm -rf /usr/local/tomcat/webapps/*
 COPY --from=build /app/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 
