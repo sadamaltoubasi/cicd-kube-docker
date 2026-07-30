@@ -5,11 +5,11 @@ metadata:
 spec:
   ports:
 
-  - port: 5672
+  - port: rmq
     targetPort: 5672
     protocol: TCP
 
-  - port: 15672
+  - port: rmqmg
     targetPort: 15672
     protocol: TCP
 
