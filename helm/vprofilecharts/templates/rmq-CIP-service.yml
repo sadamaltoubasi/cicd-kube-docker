@@ -4,14 +4,15 @@ metadata:
   name: vpromq01
 spec:
   ports:
+    - name: rmq
+      port: 5672
+      targetPort: 5672
+      protocol: TCP
 
-  - port: rmq
-    targetPort: 5672
-    protocol: TCP
-
-  - port: rmqmg
-    targetPort: 15672
-    protocol: TCP
+    - name: rmqmg
+      port: 15672
+      targetPort: 15672
+      protocol: TCP
 
   selector:
     app: vpromq01
