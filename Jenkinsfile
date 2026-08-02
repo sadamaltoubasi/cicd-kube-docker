@@ -108,6 +108,18 @@ pipeline {
 
 
     }
+        post {
+        success {
+            slackSend channel: '#kubecicd', 
+                      color: '#54EC4F', 
+                      message: "Success: ${env.JOB_NAME} - #${env.BUILD_NUMBER}"
+        }
+        failure {
+            slackSend channel: '#kubecicd', 
+                      color: '#FF0000', 
+                      message: "Failed: ${env.JOB_NAME} - #${env.BUILD_NUMBER}"
+        }
+    }
 
 
 }
