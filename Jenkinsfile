@@ -108,16 +108,14 @@ pipeline {
 
 
     }
-        post {
+post {
         success {
-            slackSend channel: '#kubecicd', 
-                      color: '#54EC4F', 
-                      message: "Success: ${env.JOB_NAME} - #${env.BUILD_NUMBER}"
+            slackSend color: '#54EC4F', 
+                      message: "✅ *Success:* Pipeline '${env.JOB_NAME}' - Build #${env.BUILD_NUMBER} completed successfully!\n🔗 *URL:* ${env.BUILD_URL}"
         }
         failure {
-            slackSend channel: '#kubecicd', 
-                      color: '#FF0000', 
-                      message: "Failed: ${env.JOB_NAME} - #${env.BUILD_NUMBER}"
+            slackSend color: '#FF0000', 
+                      message: "❌ *Failed:* Pipeline '${env.JOB_NAME}' - Build #${env.BUILD_NUMBER}\n🔴 *Failed Stage:* ${env.FAILED_STAGE}\n🔗 *URL:* ${env.BUILD_URL}"
         }
     }
 
