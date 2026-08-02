@@ -32,3 +32,10 @@ spec:
           value: "admin"
         - name: MYSQL_DATABASE
           value: "accounts"
+        volumeMounts:
+        - name: db-data
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: db-data
+        persistentVolumeClaim:
+          claimName: db-pvc
