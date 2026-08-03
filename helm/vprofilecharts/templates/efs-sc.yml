@@ -3,4 +3,7 @@ kind: StorageClass
 metadata:
   name: efs-sc
 provisioner: efs.csi.aws.com
-volumeBindingMode: Immediate
+parameters:
+  provisioningMode: efs-ap
+  fileSystemId: fs-002f40e9feb8db58f
+  directoryPerms: "700"
