@@ -38,4 +38,4 @@ spec:
       volumes:
       - name: db-data
         persistentVolumeClaim:
-          claimName: db-pvc
+          claimName: db-ebs-pvc
