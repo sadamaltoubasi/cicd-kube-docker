@@ -23,6 +23,7 @@ spec:
         volumeMounts:
         - name: efs-uploads
           mountPath: /usr/local/tomcat/webapps/ROOT/uploads
+          subPath: uploads
       
       volumes:
       - name: efs-uploads
@@ -36,6 +37,7 @@ spec:
         volumeMounts:
         - name: efs-uploads
           mountPath: /usr/local/tomcat/webapps/ROOT/uploads
+          subPath: uploads
 
       - name: init-mydb
         image: busybox
