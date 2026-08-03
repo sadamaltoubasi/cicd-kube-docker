@@ -22,7 +22,7 @@ spec:
           containerPort: 8080
         volumeMounts:
         - name: efs-uploads
-          mountPath: /usr/local/tomcat/webapps/ROOT/uploads 
+          mountPath: /usr/local/tomcat/webapps/ROOT
       
       volumes:
       - name: efs-uploads
