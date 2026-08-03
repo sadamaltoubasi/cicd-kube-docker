@@ -22,7 +22,7 @@ spec:
           containerPort: 8080
         volumeMounts:
         - name: efs-uploads
-          mountPath: /usr/local/tomcat/webapps/ROOT
+          mountPath: /usr/local/tomcat/webapps/ROOT/uploads
       
       volumes:
       - name: efs-uploads
@@ -30,6 +30,13 @@ spec:
           claimName: app-efs-pvc
 
       initContainers:
+      - name: fix-efs-permissions
+        image: busybox
+        command: ["sh", "-c", "mkdir -p /usr/local/tomcat/webapps/ROOT/uploads && chmod -R 777 /usr/local/tomcat/webapps/ROOT/uploads"]
+        volumeMounts:
+        - name: efs-uploads
+          mountPath: /usr/local/tomcat/webapps/ROOT/uploads
+
       - name: init-mydb
         image: busybox
         command: ['sh', '-c', 'until nslookup vprodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done;']
