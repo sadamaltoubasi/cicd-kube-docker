@@ -25,9 +25,12 @@ spec:
           valueFrom:
             secretKeyRef:
               name: app-secret
-              key: db-pass
+              key: db-root-pass
         - name: MYSQL_PASSWORD
-          value: "admin123"
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: db-user-pass
         - name: MYSQL_USER
           value: "admin"
         - name: MYSQL_DATABASE
