@@ -8,7 +8,7 @@ pipeline {
 
     environment {
         registry = "sadamaltoubasi/vproappdock"
-        registryCredential = 'dockerhub'
+        registryCredential = 'dockerlogin'
 
     }
 
