@@ -1,11 +1,11 @@
 pipeline {
 
     agent any
-/*
+
 	tools {
-        maven "maven3"
+        maven "MAVEN"
     }
-*/
+
     environment {
         registry = "sadamaltoubasi/vproappdock"
         registryCredential = 'dockerhub'
@@ -49,7 +49,7 @@ pipeline {
                 }
             }
         }
-
+/*
         stage('CODE ANALYSIS with SONARQUBE') {
 
             environment {
@@ -73,6 +73,8 @@ pipeline {
                 }
             }
         }
+*/
+
 
         stage('BUILD DOCKER IMAGE') {
             steps {
