@@ -14,30 +14,18 @@ spec:
       labels:
         app: vproapp
     spec:
+      imagePullSecrets:
+        - name: dockerhub-secret
       containers:
       - name: vproapp
-        image: {{ .Values.appimage}}
+        image: sadamaltoubasi/vproappdock:latest
+        #image: {{ .Values.appimage}}
         ports:
         - name: vproapp-port
           containerPort: 8080
-        volumeMounts:
-        - name: efs-uploads
-          mountPath: /usr/local/tomcat/webapps/ROOT/uploads
-          subPath: uploads
       
-      volumes:
-      - name: efs-uploads
-        persistentVolumeClaim:
-          claimName: app-efs-pvc
 
       initContainers:
-      - name: fix-efs-permissions
-        image: busybox
-        command: ["sh", "-c", "mkdir -p /usr/local/tomcat/webapps/ROOT/uploads && chmod -R 777 /usr/local/tomcat/webapps/ROOT/uploads"]
-        volumeMounts:
-        - name: efs-uploads
-          mountPath: /usr/local/tomcat/webapps/ROOT/uploads
-          subPath: uploads
 
       - name: init-mydb
         image: busybox

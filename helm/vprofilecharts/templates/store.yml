@@ -10,7 +10,5 @@ spec:
       auth:
         jwt:
           serviceAccountRef:
-            name: eso-ssm-sa
-            namespace: prod
-            audiences:
-              - amazonaws.com
+            name: external-secrets
+            namespace: external-secrets
